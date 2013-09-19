@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "net.credomobiel.mechelsecatechismus"
+        version   = "1.0.0">
+
+    <!-- versionCode is optional and Android only -->
+
+    <name>Mechelse Catechismus</name>
+
+    <description>
+        Oefen de vragen en antwoorden van de Mechelse Catechismus. 
+    </description>
+
+    <author href="http://www.credomobiel.net" email="vicmortelmans@gmail.com">
+        Vic Mortelmans 
+    </author>
+
+    <preference name="android-installLocation" value="auto" />
+
+    <icon src="favicon.png"/>
+        
+    <preference name="stay-in-webview" value="true" />
+
+    <access origin="http://127.0.0.1*"/>
+        
+    <!-- If you do not want any permissions to be added to your app, add the
+        following tag to your config.xml; you will still have the INTERNET
+        permission on your app, which PhoneGap requires. -->
+    <preference name="permissions" value="none"/>
+
+    <feature name="InAppBrowser">
+        <param name="android-package" value="org.apache.cordova.InAppBrowser"/>
+    </feature>
+        
+
+</widget>
+
