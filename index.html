@@ -19,13 +19,7 @@
             <div data-role="content">
                 
                 <ul data-role="listview">
-                <li>Eerste leerjaar<span class="ui-li-count">4/49 ★ 2</span></li>
-                <li>Tweede leerjaar<span class="ui-li-count">5/65</span></li>
-                <li>Derde leerjaar<span class="ui-li-count">45</span></li>
-                <li>Vierde leerjaar<span class="ui-li-count">23</span></li>
-                <li>Vijfde leerjaar<span class="ui-li-count">45</span></li>
-                <li>Zesde leerjaar<span class="ui-li-count">45</span></li>
-                <li>Zevende leerjaar<span class="ui-li-count">44</span></li>
+                    <li>Eerste leerjaar<span class="ui-li-count" class="score set1">4/49 ★ 2</span></li>
                 </ul>
             
             </div>
@@ -36,21 +30,30 @@
         <div id="flashcard" data-url="flashcard" data-role="page">
             <div data-role="header" data-position="fixed">
                 <h1>Eerste leerjaar</h1>
-                <a>4/49 ★ 2</a>
+                <a class="score set1">4/49 ★ 2</a>
             </div>
         
             <div data-role="content">
+                <span id="question">Dit is de vraag?</span>
+            </div>        
+            <ul id="answerbutton" data-role="listview">
+                <li>toon het antwoord</li>
+            </ul>
+            <fieldset id="rightwrong" class="ui-grid-a">
+            	<div class="ui-block-a">
+                    <ul id="right" data-role="listview">
+                        <li>juist</li>
+                    </ul>
+            	</div>
+            	<div class="ui-block-b">
+                    <ul id="wrong" data-role="listview">
+                        <li>fout</li>
+                    </ul>
+            	</div>	   
+            </fieldset>
             
-            <span id="question">Dit is de vraag?</span>
-            <div id="answerbutton" data-inline="true">
-                <input type="button" value="answer"/>
-            </div>
-            <div data-role="controlgroup" data-type="horizontal"  data-inline="true" id="evaluationbuttons">
-                <input type="button" data-theme="b" value="Juist"/>
-                <input type="button" data-theme="d" value="Fout"/>
-            </div>
-            <span id="answer">Dit is het antwoord.</span>
-
+            <div data-role="content">
+                <span id="answer">Dit is het antwoord.</span>
             </div>
     
         </div><!-- /page -->
