@@ -19,9 +19,7 @@
                 
             <div data-role="content">
                 
-                <ul data-role="listview" id="sets">
-                    <li>Eerste leerjaar<span class="ui-li-count" class="score set1">4/49 ★ 2</span></li>
-                </ul>
+                <ul data-role="listview" id="sets"></ul>
             
             </div>
         </div><!-- /page -->
@@ -30,25 +28,25 @@
         <!-- Start of second page -->
         <div id="flashcard" data-url="flashcard" data-role="page">
             <div data-role="header" data-position="fixed">
-                <h1>Eerste leerjaar</h1>
-                <a class="score set1">4/49 ★ 2</a>
+                <h1 id="set"></h1>
+                <a id="score"></a>
             </div>
         
             <div data-role="content">
                 <span id="question">Dit is de vraag?</span>
             </div>        
             <ul id="answerbutton" data-role="listview">
-                <li>toon het antwoord</li>
+                <li><a>toon het antwoord</a></li>
             </ul>
             <fieldset id="rightwrong" class="ui-grid-a">
             	<div class="ui-block-a">
                     <ul id="right" data-role="listview">
-                        <li>juist</li>
+                        <li><a>juist</a></li>
                     </ul>
             	</div>
             	<div class="ui-block-b">
                     <ul id="wrong" data-role="listview">
-                        <li>fout</li>
+                        <li><a>fout</a></li>
                     </ul>
             	</div>	   
             </fieldset>
