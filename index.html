@@ -3,7 +3,7 @@
 	<head>
     	<meta charset="utf-8">
     	<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1"> 
-    	<title>Page Title</title> 
+    	<title>Mechelse Catechismus</title> 
         <link rel="stylesheet" href="//code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
         <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
         <script src="flashcards.js"></script>
@@ -33,7 +33,7 @@
             </div>
         
             <div data-role="content">
-                <span id="question">Dit is de vraag?</span>
+                <span id="question"></span>
             </div>        
             <ul id="answerbutton" data-role="listview">
                 <li><a>toon het antwoord</a></li>
@@ -52,10 +52,16 @@
             </fieldset>
             
             <div data-role="content">
-                <span id="answer">Dit is het antwoord.</span>
+                <span id="answer"></span>
             </div>
     
         </div><!-- /page -->
         
+        
+        <!-- Start of modal dialog page -->
+        <div id="congrats" data-role="dialog">
+            <p>Proficiat!</p>
+            <p>Je hebt het volledige leerjaar afgewerkt.</p>
+        </div><!-- /page -->        
     </body>
 </html>

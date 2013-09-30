@@ -70,8 +70,6 @@ var creatingStats = function(data) {
         nice[uglyset] = set;
         // create stats in a global variable
         size[uglyset] = qa[set].length;
-        // create the initial unanswered questions lists
-        todo[uglyset] = JSON.parse(JSON.stringify(qa[set])); // alternative turns arrays into objects: jQuery.extend(true, {}, qa[set]);
     }
     def.resolve();
     return def.promise();
@@ -94,6 +92,13 @@ var formatScore = function(uglyset) {
 };
 
 var initialize = function() {
+    // if no unanswered questions came from storage, initialize from json
+    if ($.isEmptyObject(todo)) {
+        for (var set in qa) {
+            // create the initial unanswered questions lists
+            todo[ugly[set]] = JSON.parse(JSON.stringify(qa[set])); // alternative turns arrays into objects: jQuery.extend(true, {}, qa[set]);
+        }
+    }
     // initialize GUI based on global variable data
     for (var set in qa) {
         var item = '<li><a id="%uglytitle" class="set">%title<span class="ui-li-count" class="score %uglytitle">%score</span></a></li>';
@@ -112,6 +117,7 @@ var random = function() {
     return random;
 };
 
+// sequence of events during initialization
 $.when(
     loadingJSON()
         .then(function(json){
@@ -120,6 +126,7 @@ $.when(
     waitingPhoneGap().then(loadingScore)
 ).done(initialize);
 
+// event handling
 $(document).ready(function () {
     // clicking a set
     $('#sets').on('click', '.set', function() {
@@ -159,20 +166,44 @@ $(document).ready(function () {
     });
     // clicking the 'right' button
     $('#right').on('click', 'a', function() {
-        // remove the question from the unanswered questions list
-        todo[current].splice(qidx,1);
-        // update the score, also on the main page!
-        $('#score').text(formatScore(current));
-        $('#' + current).find('span').text(formatScore(current));
-        // prepare the flashcard gui for a new question
-        $('#answer').hide();
-        $('#rightwrong').hide();
-        $('#answerbutton').show();
-        // get a random question from the unanswered questions list
-        qidx = random();
-        $('#question').text(todo[current][qidx]['q']);
-        $('#answer').text(todo[current][qidx]['a']);
-        // store the score
-        storage.setObject('todo');
+        if (todo[current].length > 1) {
+        // over to next question
+            // remove the question from the unanswered questions list
+            todo[current].splice(qidx,1);
+            // update the score, also on the main page!
+            $('#score').text(formatScore(current));
+            $('#' + current).find('span').text(formatScore(current));
+            // prepare the flashcard gui for a new question
+            $('#answer').hide();
+            $('#rightwrong').hide();
+            $('#answerbutton').show();
+            // get a random question from the unanswered questions list
+            qidx = random();
+            $('#question').text(todo[current][qidx]['q']);
+            $('#answer').text(todo[current][qidx]['a']);
+            // store the score
+            storage.setObject('todo',todo);
+        } else {
+        // this was the last question, congratulations!
+            // reset the unanswered questions list
+            todo[current] = JSON.parse(JSON.stringify(qa[nice[current]]));
+            // register the completed run
+            score[current] = score[current] ? score[current] + 1 : 1;
+            // update the score, also on the main page!
+            $('#score').text(formatScore(current));
+            $('#' + current).find('span').text(formatScore(current));
+            // navigate to the modal congratulations page
+            $.mobile.changePage( "#congrats", {
+            	reverse: false,
+            	changeHash: false
+            });
+            // store the score
+            storage.setObject('todo',todo);
+            storage.setObject('score',score);
+        }
+    });
+    $('#congrats').on('click', function() {
+        // navigate to navigation screen
+        $.mobile.navigate("#navigation");
     });
 });
