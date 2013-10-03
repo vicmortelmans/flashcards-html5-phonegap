@@ -26,5 +26,9 @@
     <preference name="android-minSdkVersion" value="7" />
     <preference name="android-installLocation" value="auto" />
     <icon src="favicon.png" />
+    <icon src="favicon36.png" gap:platform="android" gap:density="ldpi" />
+    <icon src="favicon.png" gap:platform="android" gap:density="mdpi" />
+    <icon src="favicon72.png" gap:platform="android" gap:density="hdpi" />
+    <icon src="favicon96.png" gap:platform="android" gap:density="xhdpi" />
     <access origin="http://127.0.0.1*" />
 </widget>
