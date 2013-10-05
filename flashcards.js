@@ -117,17 +117,18 @@ var random = function() {
     return random;
 };
 
-// sequence of events during initialization
-$.when(
-    loadingJSON()
-        .then(function(json){
-            return creatingStats(json);
-        }),
-    waitingPhoneGap().then(loadingScore)
-).done(initialize);
-
 // event handling
 $(document).ready(function () {
+    
+    // sequence of events during initialization
+    $.when(
+        loadingJSON()
+            .then(function(json){
+                return creatingStats(json);
+            }),
+        waitingPhoneGap().then(loadingScore)
+    ).done(initialize);
+
     // clicking a set
     $('#sets').on('click', '.set', function() {
         var uglyset = $(this).attr('id');
