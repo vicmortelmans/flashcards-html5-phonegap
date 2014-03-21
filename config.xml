@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="net.credomobiel.mechelsecatechismus" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="net.credomobiel.mechelsecatechismus" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Mechelse Catechismus</name>
     <description>
         Oefen de vragen en antwoorden van de Mechelse Catechismus.
